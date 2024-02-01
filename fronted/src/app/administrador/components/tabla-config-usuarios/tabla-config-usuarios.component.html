@@ -1,0 +1,125 @@
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
+</head>
+<h2 class="text-center mt-5">Personas en el sistema</h2>
+
+<body class="mt-5">
+  <div class="container d-flex justify-content-center align-items-center vh-50">
+    <div class="row">
+      <div class="col-lg-12 col-md-10 ml-auto mr-auto">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>FechaNacimiento</th>
+                <th>Estado</th>
+                <th class="text-right">Documentacion</th>
+                <th class="text-right">Modificar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let personatabla of personas">
+                <td>{{ personatabla.Nombre }}</td>
+                <td>{{ personatabla.Apellido }}</td>
+                <td>{{ personatabla.FechaNacimiento }}</td>
+                <td *ngIf="personatabla.Estado == true">Activo</td>
+                <td *ngIf="personatabla.Estado == false">Inactivo</td>
+                <td class="td-actions text-center">
+                  <button type="btn-danger" rel="tooltip" class="btn btn-success btn-just-icon btn-sm"
+                    data-original-title="" data-bs-toggle="modal" data-bs-target="#exampleModal" title=""
+                    (click)="getPersonaId(personatabla.Id)">
+                    <i class="material-icons">edit</i>
+                  </button>
+                </td>
+                <td class="td-actions text-center">
+                  <button type="button" class="btn btn-success btn-just-icon btn-sm"
+                    data-original-title="" data-bs-toggle="modal" data-bs-target="#" title=""
+                    (click)="idEditar(personatabla.Id)">
+                    <i class="material-icons">edit</i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" (click)="loadPrevious()" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item">
+            <a class="page-link" (click)="loadMore()" aria-label="Next">
+              <span aria-hidden="true"> &raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</body>
+
+<!-- Modal agregar documento-->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModaltipocambio"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">
+          Agregar documentacion
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body text-center align-middle">
+        <div class="h5 text-dark">Tipo de documento</div>
+        <input
+          type="text"
+          class="form-control"
+          aria-describedby="emailHelp"
+          id="tipoDocumento" 
+          name="tipoDocumento" 
+          [(ngModel)]="documento.tipo"
+        />
+      </div>
+      <div class="modal-body text-center align-middle">
+        <div class="h5 text-dark"># de documento</div>
+        <input
+          type="text"
+          class="form-control"
+          aria-describedby="emailHelp"
+          id="nDocumento" 
+          name="nDocumento" 
+          [(ngModel)]="documento.numero"
+        />
+      </div>
+      <br />
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="guardarCambios()"
+        >
+          Guardar cambios
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

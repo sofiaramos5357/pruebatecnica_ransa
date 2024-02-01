@@ -1,0 +1,25 @@
+<form class="text-center mt-5">
+  <div style="font-size: 50px" class="text-white">
+    Bienvenido
+  </div>
+
+  <div class="mx-2 mt-4">
+    <label for="correo" class="form-label text-white">Correo/usuario</label>
+    <input type="email" [(ngModel)]="usuario.Correo" class="form-control" id="correo" name="correo" />
+  </div>
+
+  <div class="mx-2 mt-3">
+    <label for="contrasena" class="form-label text-white">Contraseña</label>
+    <input type="password" [(ngModel)]="usuario.Contrasena" class="form-control" id="contrasena" name="contrasena" />
+  </div>
+
+
+  <div class="d-grid mx-2 mt-5">
+    <button type="submit" class="btn text-white" style="background-color: #2badbe" (click)="signUp()">
+      Entrar
+    </button>
+  </div>
+
+
+
+</form>

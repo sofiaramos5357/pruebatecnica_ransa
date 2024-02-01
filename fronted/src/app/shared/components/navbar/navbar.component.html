@@ -1,0 +1,41 @@
+<head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
+</head>
+
+<nav class="navbar navbar-expand-lg navbar-custom">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" routerLink="/home/admin" routerLinkActive="active"
+          (click)="reloadPageIfCurrentRoute('/home/admin')">
+          <div style="
+              color: #ffffff;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            ">
+            <i class="material-icons">home</i>
+          </div>
+        </a>
+        <a class="nav-link" routerLink="/registrarpersona" routerLinkActive="active"
+          (click)="reloadPageIfCurrentRoute('/registrarpersona')">
+          <div style="
+              color: #ffffff;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            ">
+            Registrar persona
+          </div>
+        </a>
+      </div>
+    </div>
+    <button type="button" class="btn btn-danger">
+      <a class="nav-link" (click)="authService.logout()">Cerrar sesión</a>
+    </button>
+  </div>
+</nav>
